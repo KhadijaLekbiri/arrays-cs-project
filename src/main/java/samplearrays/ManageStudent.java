@@ -1,8 +1,5 @@
 package samplearrays;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class ManageStudent {
 
     // 2) Find the Oldest Student
@@ -160,6 +157,29 @@ public class ManageStudent {
          Student[] newList = appendStudent(arr, new Student(2,"Hiba"));
         System.out.println("== All Students ==");
         for (Student s : newList) System.out.println(s);
+
+        //school in 2D array
+        Student[][] school = new Student[2][3];
+        String[][] names = {{"Ali", "Yassine","Hiba"},{"Farid","Abid","Fatima"}};
+        int[][] ages = {{12,17,24},{14,19,15}};
+        int[][] grades = {{13,16,13},{15,19,20}};
+
+        for (int i = 0; i < 2;i++){
+            System.out.println("=== Class "+(i+1)+" ===");
+            for (int j = 0; j < 3;j++) {
+                school[i][j] = new Student(j,names[i][j],ages[i][j],grades[i][j]);
+                System.out.println(school[i][j].getName());
+            }
+        }
+        for (int i = 0; i < 2;i++){
+            Student topStudent = school[i][0];
+            for (int j = 0; j < 3;j++) {
+                if (topStudent.getGrade() < school[i][j].getGrade()){
+                    topStudent = school[i][j];
+                }
+            }
+            System.out.println("Top Student in class "+(i+1)+": "+  topStudent.toString());
+        }
     }
 }
 
